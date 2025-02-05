@@ -1,12 +1,14 @@
 import java.time.LocalDate;
 
+
+
 public class Vehiculos {
     private String marca;
     private String modelo;
     private  int anio;
     private   double velocidadMaxima;
     private String tipo; //Diesel, Gasolina, Electrico, Hibrido
-    
+   
     
     public Vehiculos(String marca, String modelo, int anio, double velocidadMaxima, String tipo) {
         this.marca = marca;
@@ -62,44 +64,60 @@ public class Vehiculos {
         
     
         
-    
-
-            
     public double calcularImpuesto(){
+
         double impuestoBase = 200;
         double impuesto = 0;
         int anioActual = LocalDate.now().getYear();
 
-        if (anioActual-anio > 20){
-            impuesto = 0.1;
-        }else if (anioActual-anio >10){
-            impuesto= 0.05;
+     if (anioActual-anio > 20){
+        impuesto = 0.1;
+     }else if (anioActual-anio >10){
+        impuesto= 0.05;
 
-        }
+     }
 
         
        
 
         // tipo de combustible
-        if (tipo.equals("Diesel")  tipo.equals("Gasolina")){
+        if (tipo.equals("Diesel") || tipo.equals("Gasolina")){
             impuesto += 0.1;
 
         }else if (tipo.equals("Hibrido")){
-            impuesto - = 0.5
+            impuesto -= 0.1;
 
 
         }else if (tipo.equals("Electrico")){
+            impuesto -= 0.5;
 
         }
            
+        if (this instanceof Coche  ){
+            impuesto+= 0.05;
+        }else if(this instanceof Motocicleta){
+            impuesto-= 0.05;
+        }else if (this instanceof Camion){
+            impuesto= 0.05;
+
+        }
 
 
-        
+        impuesto = impuestoBase * impuesto;
+
+        return impuesto;
 
         
         
 
           
     }
-    
+
+
+
+
 }
+       
+    
+    
+

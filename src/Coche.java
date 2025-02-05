@@ -44,6 +44,19 @@ public class Coche extends Vehiculos {
     }
 
 
+    @Override
+    public double calcularImpuesto() {
+        
+       double impuesto = super.calcularImpuesto();
+
+       impuesto += 0.05;
+       impuesto = 200 * impuesto;
+        
+        return impuesto;
+
+    }
+
+
     
 
    
